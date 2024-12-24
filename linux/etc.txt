@@ -1,0 +1,68 @@
+1. /etc/passwd
+内容: ユーザーアカウント情報が記録されたファイル。
+主な情報: ユーザー名、UID（ユーザーID）、GID（グループID）、ホームディレクトリ、ログインシェルなど。
+例: root:x:0:0:root:/root:/bin/bash
+
+2. /etc/group
+内容: グループ情報が記録されたファイル。
+主な情報: グループ名、GID、グループメンバーなど。
+
+3. /etc/shadow
+内容: パスワード情報が記録されたファイル（暗号化済み）。
+セキュリティ: 一般ユーザーは閲覧できない（root権限が必要）。
+
+4. /etc/fstab
+内容: システム起動時にマウントするファイルシステムの情報を記述したファイル。
+例: UUID=xxxx-xxxx  /  ext4  defaults  0  1
+
+5. /etc/hosts
+内容: IPアドレスとホスト名を関連付けるファイル。
+例:
+  127.0.0.1  localhost
+  192.168.1.10  myserver
+
+6. /etc/hostname
+内容: システムのホスト名を記録したファイル。
+用途: システム起動時にホスト名を設定。
+
+7. /etc/resolv.conf
+内容: DNSサーバーの情報を設定するファイル。
+例:
+  nameserver 8.8.8.8
+  nameserver 8.8.4.4
+
+8. /etc/systemd/
+内容: systemd の設定ファイルが格納されているディレクトリ。
+用途: サービスやターゲットの管理。
+
+9. /etc/network/
+内容: ネットワーク設定関連のファイルを格納したディレクトリ。
+例: /etc/network/interfaces: ネットワークインターフェイスの設定。
+
+10. /etc/init.d/
+内容: 起動スクリプトが格納されているディレクトリ（古いinitシステム用）。
+用途: サービスの起動や停止をスクリプトで管理。
+11. /etc/cron.*/
+内容:
+Cron（タスクスケジューラー）の設定を格納するディレクトリ。
+例:
+/etc/cron.daily/: 毎日実行するタスクを格納。
+/etc/cron.hourly/: 毎時実行するタスクを格納。
+
+12. /etc/ssh/
+内容: SSHサーバーの設定ファイルを格納するディレクトリ。
+例: /etc/ssh/sshd_config: SSHサーバー設定。
+
+13. /etc/nginx/（または /etc/apache2/）
+内容: Webサーバー（NginxやApache）の設定ファイルを格納するディレクトリ。
+例: /etc/nginx/nginx.conf: Nginxのメイン設定ファイル。
+
+14. /etc/logrotate.conf
+内容: ログのローテーション（定期的なファイルの圧縮・削除）の設定。
+
+15. /etc/my.cnf（または /etc/mysql/）
+内容: MySQLやMariaDBの設定ファイル。
+
+16. /etc/default/
+内容: デフォルト設定を格納するファイル群（サービスやシステム設定の初期値）。
+例: /etc/default/grub: GRUBブートローダーのデフォルト設定。

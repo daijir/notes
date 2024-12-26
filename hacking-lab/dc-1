@@ -47,7 +47,8 @@ which python
 python -c 'import pty; pty.spawn("/bin/bash")'
 
 tty
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/gtmp
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:
+/sbin:/bin:/usr/games:/tmp
 export TERM=xterm-256color
 alias ll='ls -la --color=auto'
 ll
@@ -71,6 +72,7 @@ ll
 //shm = shared memory
 cd /dev/shm
 ll
+file .tmpfs
 
 // Disk Free -Human readable
 df -h
@@ -85,3 +87,42 @@ id
 whoami
 cd /root
 ls
+
+
+//side note
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/tmp
+  /usr/local/sbin
+  ローカルにインストールされたスーパーユーザー向けのプログラムを格納するディレクトリ。
+  /usr/local/bin
+  
+  ローカルにインストールされた一般ユーザー向けのプログラムを格納するディレクトリ。
+  /usr/sbin
+  
+  システム管理者向けのプログラムを格納するディレクトリ。
+  /usr/bin
+  
+  一般ユーザーが使用する標準的なコマンドを格納するディレクトリ。
+  /sbin
+  
+  システム管理者用の基本的なコマンドを格納するディレクトリ。
+  /bin
+  
+  基本的なコマンド（システム起動や通常操作に必要なコマンド）を格納するディレクトリ。
+  /usr/games
+
+ユーザー向けのゲームプログラムを格納するディレクトリ。
+/tmp
+
+一時ファイルを格納するディレクトリ。
+通常、コマンドが格納される場所ではないため、この設定は異例です。
+
+
+4. /bin/bash -p
+-exec によって実行されるコマンド部分です。
+/bin/bash は Bash シェルを起動します。
+-p オプションは「privileged（特権モード）」を有効にします。このモードでは、環境変数を無視してシェルが起動され、セキュリティ上の影響を避ける動作をします。
+5. \;
+-exec オプションの終了を意味します。\; は、シェルによる解釈を避けるためにエスケープしています。
+6. -quit
+find コマンドを最初の結果が見つかった時点で終了させるオプションです。これにより、不要な検索を防ぎ、効率を上げます。

